@@ -33,7 +33,7 @@ html,body {
 .page .enterpage{  overflow: hidden;background-image: url("../images/enterpage.jpg") }
 
 .page .longpage{ background-color: #ebebeb; }
-.longpage>div{ position: relative; }
+.longpage>div{ position: relative; padding-top: 30px;}
 .groupinfo{ width:480px;background-color: #cecece;margin:20px 0 20px 78px;}
 .cont{ padding:20px; }
 
@@ -49,14 +49,14 @@ html,body {
 .left-massge .redpick{ left:90px;top:40px; }
 #sanlianfa img{width: 34px; height: 34px; margin: 0 0 0 6px;}
 
-.right-massge { position: relative;float: right;width:640px;margin-left: 20px; }
+.right-massge { position: relative;float: right;width:640px;margin-left: 20px;}
 .right-massge>div{position: absolute;}
 .right-massge .headimg{right: 10px;}
 .right-massge .headimg>img{ width:70px;height:70px;margin-top: 6px;}
 .right-massge .mname{ font-size:22px;color:#737373;right:100px;}
 .right-massge .mcontent{ margin: 37px 0 0 90px; right: 100px;}
 .right-massge .redpick{ left:100px;top:40px; }
-.right-massge .mcontent .mcla{padding: 10px;border: 1px solid #dadada;max-width: 400px;left:20px;background-color: white;margin-left: 13px;}
+.right-massge .mcontent .mcla{padding: 10px;border: 1px solid #79D251;max-width: 400px;left:20px;background-color: #99EF4E; margin-left: 13px;}
 .right-massge .mcontent .jb{position: absolute;top:11px;right: -12px;}
 
 /*马化腾红包提示*/

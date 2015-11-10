@@ -99,49 +99,54 @@ $(function(){
         _timer = setInterval(setMS2,1500)
     }
 
-    function setMS1(){
-        if(msgID<=5){
-            if(msgID==3) receiveMoney();
-            $('#msg'+msgID).fadeIn();
-            playmessagesSound();
+    // function setMS1(){
+    //     if(msgID<=9){
+    //         // $('#msg'+msgID).fadeIn();
+    //         playmessagesSound();
+            
+    //     }else{
+    //         clearInterval(_timer);
+    //     }
+    //     msgID++;
+    // }
 
+    function setMS1(){
+        if(msgID<=9){
             if(msgID == 2){
                 clearInterval(_timer);
-                _timer = setInterval(setMS1,2500)
+                _timer = setInterval(setMS1,2000)
             }
-        }else{
-            clearInterval(_timer);
-        }
-        msgID++;
-    }
-
-    function setMS2(){
-        if(msgID<=9){
-            if(msgID==5){
-                _btn1 = 2;
-                _btn2 = 2;
-                _btn3 = 2;
+            if(msgID==3) {
+                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': -100 + 'px'}, ease: Linear.easeNone });
+                dist += -100;
+                clearInterval(_timer);
+                _timer = setInterval(setMS1,4000)
             }
-
-            if(msgID==5) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': -80 + 'px'}, ease: Linear.easeNone });
-                dist += -80;
+            else if(msgID==4) {
+                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-200 + 'px'}, ease: Linear.easeNone });
+                dist += -200;
+                clearInterval(_timer);
+                _timer = setInterval(setMS1,4000)
             }
-            if(msgID==6) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-160 + 'px'}, ease: Linear.easeNone });
-                dist += -160;
-            }
-            if(msgID==7) {
+            else if(msgID==5) {
                 TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-120 + 'px'}, ease: Linear.easeNone });
                 dist += -120;
             }
-            if(msgID==8) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-170 + 'px'}, ease: Linear.easeNone });
-                dist += -170;
+            else if(msgID==6) {
+                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-250 + 'px'}, ease: Linear.easeNone });
+                dist += -200;
             }
-            if(msgID==9) {
+            else if(msgID==7) {
+                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-120 + 'px'}, ease: Linear.easeNone });
+                dist += -140;
+            }
+            else if(msgID==8) {
+                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-170 + 'px'}, ease: Linear.easeNone });
+                dist += -210;
+            }
+            else if(msgID==9) {
                 TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-270 + 'px'}, ease: Linear.easeNone });
-                dist += -270;
+                dist += -310;
             }
 
             $('#msg'+msgID).fadeIn();
@@ -152,128 +157,7 @@ $(function(){
         msgID++;
     }
 
-    var _btn1 = 1;
-    var _btn2 = 1;
-    var _btn3 = 1;
 
-    //打开红包
-    var isTheFirstReceive = true;
-    var ct = true;
-    function receiveMoney(){
-        $('#redpick1, #msg3 .hand').one(touchstart, function(){
-            $('#msg3 .circle').css({'animation':'none','-webkit-animation':'none'});
-            $('#msg3 .circle,#msg3 .hand').fadeOut();
-      _mz_wx_view (2);//马云红包页
-      _mz_wx_custom(1); 
-            if(isTheFirstReceive){
-                if(ct){
-                    $('.hongbao,#hb1').show();
-                    TweenMax.to('#hb1',.5, {alpha:1, scale:1, ease:Bounce.easeOut});
-                }else{
-                    $('.hongbao,#hb1Open,#btn3').show();
-                    TweenMax.to('#hb1Open',.5, {alpha:1, scale:1, ease:Bounce.easeOut});
-                }
-            }else{
-                $('.hbnull,#null1').show();
-            }
-        })
-    }
-
-    //拆红包：
-    var canRemoveMoney = true;
-    $('#btn2').on(touchstart, function(){
-        if(_btn2==1){
-            if(canRemoveMoney){
-        _mz_wx_view (3);//马云红包派完页
-        _mz_wx_custom(2); 
-                $('#hb1Open,#btn3').show();
-                $('#hb1').hide();
-                TweenMax.to('#hb1',{scale:0.5, alpha:0});
-                setTimeout(function(){
-                    $('#hongbao .circle').show();
-                    $('#hongbao .hand').show();
-                },2000);
-                //canRemoveMoney = false;
-                //第一次拆红包，设置关闭按钮为第二页的关闭
-                isTheFirstClose = false;
-            }else{
-                alert('已经拆过红包了');
-            }
-        }else{
-            //CEO的红包
-            _mz_wx_custom(6);
-            setTimeout(function(){
-                location.href='http://gsactivity.diditaxi.com.cn/gulfstream/activity/v2/giftpackage/index?g_channel=daa5bc94b675c63588ea21911160c32c';
-            },250);
-        }
-    })
-
-    //看手气：
-    $('#btn3').on(touchstart, function(){
-        $('.hbnull,#null1').show();
-        $('#hb1Open').hide();
-    _mz_wx_view (4);//马云红包看手气页
-    _mz_wx_custom(3); 
-        setTimeout(function(){
-            $('#hbnull .circle').show();
-            $('#hbnull .hand').show();
-        },2000);
-    })
-
-    //详情页：
-    //var isTheFirst = true;
-    $('#null1,.hbnull .circle,.hbnull .hand').on(touchstart, function(){
-        $('#null1,.hbnull').fadeOut();
-        $('.hongbao').hide();
-        $('#hbnull .circle').remove();
-        $('#hbnull .hand').remove();
-        $('#hongbao .circle').remove();
-        $('#hongbao .hand').remove();
-        isTheFirstReceive = false;
-        goNextAnimation();
-    })
-
-    //关闭
-    var isTheFirstClose = true;
-    $('#btn1').on(touchstart, function(){
-        if(_btn1 == 1){
-            if(isTheFirstClose){
-                //拆红包页关闭
-                $('.hongbao,#hb1').hide();
-                $('#hongbao .circle').remove();
-                $('#hongbao .hand').remove();
-                TweenMax.set('#hb1', {alpha:0, scale:0.5});
-                goNextAnimation();
-                //isTheFirstClose = false;
-            }else{
-                $('.hongbao,#hb1Open,#btn3').hide();
-                $('#hongbao .circle').remove();
-                $('#hongbao .hand').remove();
-                TweenMax.to('#hb1Open',.5, {alpha:0, scale:0.5, ease:Bounce.easeOut});
-                //第二页点击关闭按钮：
-                ct = false;
-                goNextAnimation();
-            }
-        }else{
-
-        }
-    })
-
-    //继续下面的动画：
-    var cangoNext = true;
-    function goNextAnimation(){
-        if(cangoNext){
-            messages2();
-        }
-    }
-
-    //打开CEO的红包
-    $('#redpick2, #msg9 .hand').on(touchstart, function(){
-        $('.hongbao,#hb2').show();
-    _mz_wx_view (5);//打开滴滴程CEO红包
-    _mz_wx_custom(4); 
-        TweenMax.to('#hb2',.5, {alpha:1, scale:1, ease:Bounce.easeOut});
-    })
 
     //阻止屏幕双击以后向上位移,当有表单页的时候，要关闭阻止事件，否则不能输入文字了
     function initPreventPageDobuleTap(isPreventPageDobuleTap){
