@@ -41,7 +41,7 @@ $(function(){
         $(".main").fadeIn(300,function(){
             setTimeout(function(){
                 $('.longpage').show();
-                document.title='亿万富豪红包群（20）';
+                document.title='李叫兽';
                 //setTimeout(function(){
                 //    motionObj['page'+1].play();
                 //},1000)
@@ -89,7 +89,7 @@ $(function(){
     function messages1(){
         msgID=1;
         dist = -150;
-        _timer = setInterval(setMS1,1500)
+        _timer = setInterval(setMS1,750)
     }
     //显示消息2
     function messages2(){
@@ -111,44 +111,37 @@ $(function(){
     // }
 
     function setMS1(){
-        if(msgID<=9){
+        if(msgID<=7){
             if(msgID == 2){
                 clearInterval(_timer);
                 _timer = setInterval(setMS1,2000)
             }
-            if(msgID==3) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': -100 + 'px'}, ease: Linear.easeNone });
-                dist += -100;
+            else if(msgID==3) {
+                // TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': -100 + 'px'}, ease: Linear.easeNone });
+                // dist += -100;
                 clearInterval(_timer);
-                _timer = setInterval(setMS1,4000)
+                _timer = setInterval(setMS1,3000)
             }
             else if(msgID==4) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-200 + 'px'}, ease: Linear.easeNone });
-                dist += -200;
+                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-20 + 'px'}, ease: Linear.easeNone });
+                dist += -20;
                 clearInterval(_timer);
-                _timer = setInterval(setMS1,4000)
+                _timer = setInterval(setMS1,3000)
             }
             else if(msgID==5) {
                 TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-120 + 'px'}, ease: Linear.easeNone });
                 dist += -120;
+                clearInterval(_timer);
+                _timer = setInterval(setMS1,3000)
             }
             else if(msgID==6) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-250 + 'px'}, ease: Linear.easeNone });
-                dist += -200;
+                TweenMax.to($(".longpage>div").not($('.di')), 1, { css: {'top': dist-500 + 'px'}, ease: Linear.easeNone });
+                dist += -500;
             }
             else if(msgID==7) {
                 TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-120 + 'px'}, ease: Linear.easeNone });
                 dist += -140;
             }
-            else if(msgID==8) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-170 + 'px'}, ease: Linear.easeNone });
-                dist += -210;
-            }
-            else if(msgID==9) {
-                TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-270 + 'px'}, ease: Linear.easeNone });
-                dist += -310;
-            }
-
             $('#msg'+msgID).fadeIn();
             playmessagesSound();
         }else{
