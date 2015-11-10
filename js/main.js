@@ -135,12 +135,12 @@ $(function(){
                 _timer = setInterval(setMS1,3000)
             }
             else if(msgID==6) {
-                TweenMax.to($(".longpage>div").not($('.di')), 1, { css: {'top': dist-500 + 'px'}, ease: Linear.easeNone });
-                dist += -500;
+                TweenMax.to($(".longpage>div").not($('.di')), 1, { css: {'top': dist-600 + 'px'}, ease: Linear.easeNone });
+                dist += -600;
             }
             else if(msgID==7) {
                 TweenMax.to($(".longpage>div").not($('.di')), .5, { css: {'top': dist-120 + 'px'}, ease: Linear.easeNone });
-                dist += -140;
+                dist += -120;
             }
             $('#msg'+msgID).fadeIn();
             playmessagesSound();
